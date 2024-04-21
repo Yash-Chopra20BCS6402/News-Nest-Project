@@ -1,0 +1,85 @@
+@(newsForm: Form[caseClasses.NewsData])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/addPost.css")">
+    <title>Write a Post</title>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="logo">
+        <img src="@routes.Assets.versioned("images/logo.png")" alt="Web Logo">
+    </div>
+    <div class="logo logout-btn-class">
+        @helper.form(action = routes.NewsController.logout) {
+        @helper.CSRF.formField
+        <button type="submit" id="logout-btn" style="background: transparent; margin: 0px; padding:0px; text-align: center;">
+            <img src="@routes.Assets.versioned("images/logout.png")" alt="Logout Image">
+        </button>
+        }
+    </div>
+</div>
+
+<div class="content">
+    <h1 style="font-size: 25px; color: #d00000; padding: 20px;">Write a News</h1>
+    <div class="write-post-div">
+        <div class="write-manually">
+            @helper.form(action = routes.NewsController.uploadNews) {
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" class="form-control no-border underline" placeholder="Enter title ..." required>
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea id="content" name="content" class="form-control no-border underline" placeholder="Enter content ..." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category" class="form-control no-border underline" placeholder="Enter category ..." required>
+            </div>
+            <div class="form-group">
+                <label for="publisher_name">Publisher name</label>
+                <input type="text" id="publisher_name" name="publisher_name" class="form-control no-border underline" placeholder="Enter publisher name ..." required>
+            </div>
+            @helper.CSRF.formField
+            <button type="submit" style="margin-top: 20px;">Publish</button>
+            }
+        </div>
+
+        <div class="upload-news-div">
+            <h2 style="font-size: 20px; color: #ff5e62; padding: 20px;">Upload a news jason file</h2>
+            @helper.form(action = routes.NewsController.uploadNewsFromFile, 'enctype -> "multipart/form-data") {
+            @helper.CSRF.formField
+            <div class="form-group">
+                <input type="file" id="newsFile" name="newsFile" accept=".json" style="display: none;" onchange="showFileName()">
+                <button type="button" id="chooseFileButton" onclick="document.getElementById('newsFile').click()">Choose File</button>
+                <span id="fileName" style="display: none;"></span>
+            </div>
+            <button type="submit" id="uploadButton">Upload</button>
+            }
+        </div>
+    </div>
+
+
+</div>
+@helper.form(action = routes.NewsController.goToProfilePage, 'enctype -> "multipart/form-data") {
+@helper.CSRF.formField
+<button class="button" style="position: fixed; bottom: 20px; right: 20px;  background: #ff9966;
+              background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);
+              background: linear-gradient(to right, #ff5e62, #ff9966); border: none; padding: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); cursor:pointer; color: white; border-radius: 5px;">Profile</button>
+}
+<script>
+    function showFileName() {
+        var input = document.getElementById('newsFile');
+        var fileNameSpan = document.getElementById('fileName');
+        if (input.files.length > 0) {
+            fileNameSpan.innerHTML = 'Selected file: ' + input.files[0].name;
+            fileNameSpan.style.display = 'inline';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.topbar {
+  background: #ff9966;
+              background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);
+              background: linear-gradient(to right, #ff5e62, #ff9966);
+  color: #fff;
+  padding: 10px 20px;
+  margin: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+      align-items: center;
+}
+
+.logout-btn-class form {
+    margin : 0px;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+}
+
+#logout-button img {
+  width: 30px;
+  height: 30px;
+}
+
+.content {
+  margin: 20px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.write-post-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.write-manually {
+left: 0;
+    width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.upload-news-div {
+right: 0;
+    width: 40%;
+    margin-left: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 150px;
+  color: #ff5e62;
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+
+.form-control:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+button[type="submit"], #chooseFileButton, #uploadButton {
+  background-color: #ff5e62;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+}
+
+button[type="submit"]:hover, #chooseFileButton:hover, #uploadButton:hover {
+  background-color: #ff9966;
+}
+
+#newsFile {
+  display: none;
+}
+
+#fileName {
+  display: none;
+  margin-left: 10px;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slideInFromLeft {
+  animation-name: slideInFromLeft;
+  animation-duration: 1s;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slideInFromRight {
+  animation-name: slideInFromRight;
+  animation-duration: 1s;
+}
+
+.container-tool {
+  position: relative;
+  background: transparent;
+  width: 100%;
+}
+
+#hoverButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  height: 100px;
+  width: 120px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#hoverButton img{
+height: 100%;
+width: 100%;
+fill: cover;
+}
+
+.buttonText {
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.hoverText {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#hoverButton:hover .buttonText {
+  opacity: 0;
+}
+
+#hoverButton:hover .hoverText {
+  opacity: 1;
+}

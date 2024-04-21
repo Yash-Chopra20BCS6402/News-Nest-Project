@@ -1,0 +1,24 @@
+@(userList: Seq[models.User])
+
+<h1>Analyze News</h1>
+
+<select id="publisherSelect">
+    <option value="">Select Publisher</option>
+    @for(user <- userList) {
+    <option value="@user.id">@user.userName</option>
+    }
+</select>
+
+<button id="displayNewsButton">Display News</button>
+
+<script>
+    document.getElementById('displayNewsButton').addEventListener('click', function() {
+      var userId = document.getElementById('publisherSelect').value;
+      if (userId) {
+        // Redirect to the page displaying news for the selected publisher
+        window.location.href = '/display-news/' + userId;
+      } else {
+        alert('Please select a publisher.');
+      }
+    });
+</script>

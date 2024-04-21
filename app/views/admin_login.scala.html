@@ -1,0 +1,25 @@
+@(userForm: Form[User])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin  Login</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/admin_login.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <h2>Admin Login</h2>
+        @helper.form(action = routes.AdminController.login) {
+        <form class="login-form">
+            <input type="text" id="username" name="userName" placeholder="Username" required>
+            <input type="password" id="password" name="pwd"  placeholder="Password" required>
+            @helper.CSRF.formField
+            <button type="submit">Log in</button>
+        </form>
+        }
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+@(userForm: Form[User])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@main("News") {
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/authentication.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        @helper.form(action = routes.HomeController.register) {
+        <form>
+            <h1>Create Account</h1>
+            <span>Enter your unique username</span>
+            <input type="text" id="username" name="userName" placeholder="Username" required>
+            <input type="password" id="password" name="pwd" placeholder="Password" required>
+            @helper.CSRF.formField
+            <button type="submit">Sign Up</button>
+            }
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        @helper.form(action = routes.HomeController.login) {
+        <form>
+            <h1>Sign in</h1>
+            <span>Use your account</span>
+            <input type="text" id="username1" name="userName" placeholder="Username" required>
+            <input type="password" id="password1" name="pwd" placeholder="Password" required>
+            @helper.CSRF.formField
+            <button type="submit">Sign In</button>
+            }
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start your journey of writing with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
+
+</html>
+}
